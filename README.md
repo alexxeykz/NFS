@@ -151,6 +151,7 @@ base
 Created symlink from /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.service to /usr/lib/systemd/system/firewalld.service.
 Created symlink from /etc/systemd/system/multi-user.target.wants/firewalld.service to /usr/lib/systemd/system/firewalld.service.
 ```
+```
   [root@nfscln vagrant]# systemctl status firewalld
   firewalld.service - firewalld - dynamic firewall daemon
    Loaded: loaded (/usr/lib/systemd/system/firewalld.service; enabled; vendor preset: enabled)
@@ -163,6 +164,7 @@ Created symlink from /etc/systemd/system/multi-user.target.wants/firewalld.servi
 Apr 15 20:53:58 nfscln systemd[1]: Starting firewalld - dynamic firewall daemon...
 Apr 15 20:53:58 nfscln systemd[1]: Started firewalld - dynamic firewall daemon.
 Apr 15 20:53:58 nfscln firewalld[22278]: WARNING: AllowZoneDrifting is enabled. This is considered an insecure configuration option. It will be removed in a future release. Please consider disabling it now.
+```
 ```
  добавляем в /etc/fstab строку:
 ```
