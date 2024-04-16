@@ -322,10 +322,11 @@ check_file  client_file
 - создаём тестовый файл `touch final_check` 
 - проверяем, что файл успешно создан 
 ```
+```
 [root@nfscln upload]# touch final_check
 [root@nfscln upload]# ls
 check_file  client_file  final_check
-
+```
 Проверки стенда пройдены!!!
 
 
