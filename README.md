@@ -168,13 +168,17 @@ Apr 15 20:53:58 nfscln firewalld[22278]: WARNING: AllowZoneDrifting is enabled. 
 ```
  добавляем в /etc/fstab строку:
 ```
+```
 [root@nfscln vagrant]# echo "192.168.56.120:/srv/share/ /mnt nfs vers=3,proto=udp,noauto,x-systemd.automount 0 0" >> /etc/fstab
 ```
+```
 и выполняем
+```
 ```
 [root@nfscln vagrant]# systemctl daemon-reload
 [root@nfscln vagrant]# systemctl restart remote-fs.target
 ```
+
 Заходим в директорию `/mnt/` и проверяем успешность монтирования:
 ```
 [root@nfscln vagrant]# mount | grep mnt
@@ -192,6 +196,7 @@ Last login: Mon Apr 15 19:44:53 2024 from 10.0.2.2
 [root@nfsserv upload]# ls
 check_file
 ```
+
 ```
 - заходим на клиент 
 - заходим в каталог `/mnt/upload` 
@@ -219,6 +224,7 @@ check_file  client_file
 - заходим в каталог `/mnt/upload` 
 - проверяем наличие ранее созданных файлов 
 ```
+
 [root@nfscln upload]# reboot
 Connection to 127.0.0.1 closed by remote host.
 root@testvm:/home/NFS# vagrant ssh nfsc
@@ -227,6 +233,7 @@ Last login: Mon Apr 15 21:23:54 2024 from 10.0.2.2
 [root@nfscln vagrant]# cd /mnt/upload
 [root@nfscln upload]# ls
 check_file  client_file
+```
 ```
 
 Тест клиента прошел успешно. После перезагрузки папкапримонтирована, файлы на месте.
@@ -242,10 +249,13 @@ check_file  client_file
 - проверяем работу RPC showmount -a 192.168.56.120
 ```
 ```
+```
 root@testvm:/home/NFS# vagrant ssh nfss
 Last login: Mon Apr 15 21:17:49 2024 from 10.0.2.2
 [vagrant@nfsserv ~]$ sudo -s
 [root@nfsserv vagrant]# reboot
+```
+```
 ```
 ```
 root@testvm:/home/NFS# vagrant ssh nfss
@@ -254,7 +264,9 @@ Last login: Mon Apr 15 21:35:22 2024 from 10.0.2.2
 [root@nfsserv vagrant]# ls /srv/share/upload/
 check_file  client_file
 ```
+```
 Файлы и монтирование после перезагрузки на месте.
+```
 ```
 [root@nfsserv vagrant]# systemctl status nfs
 ● nfs-server.service - NFS server and services
@@ -270,6 +282,7 @@ check_file  client_file
 
 Apr 15 21:36:35 nfsserv systemd[1]: Starting NFS server and services...
 Apr 15 21:36:35 nfsserv systemd[1]: Started NFS server and services.
+```
 ```
 статус firewall успешно
 ```
@@ -292,13 +305,16 @@ All mount points on 192.168.56.120:
 - возвращаемся на клиент
 - перезагружаем клиент 
 ```
+```
 root@testvm:/home/NFS# vagrant ssh nfsc
 Last login: Mon Apr 15 21:28:08 2024 from 10.0.2.2
 [vagrant@nfscln ~]$ sudo -s
 [root@nfscln vagrant]# reboot
 ```
+```
 - заходим на клиент 
 - проверяем работу RPC `showmount -a 192.168.56.120`
+```
 ```
 Connection to 127.0.0.1 closed by remote host.
 root@testvm:/home/NFS# vagrant ssh nfsc
@@ -307,24 +323,26 @@ Last login: Mon Apr 15 21:46:27 2024 from 10.0.2.2
 All mount points on 192.168.56.120:
 ```
 ```
+```
 - заходим в каталог `/mnt/upload` 
 - проверяем статус монтирования `mount | grep mnt`
+```
 ```
 ```
 [root@nfscln vagrant]# cd /mnt/upload
 [root@nfscln upload]# mount | grep mnt
 systemd-1 on /mnt type autofs (rw,relatime,fd=33,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=11183)
 192.168.56.120:/srv/share/ on /mnt type nfs (rw,relatime,vers=3,rsize=32768,wsize=32768,namlen=255,hard,proto=udp,timeo=11,retrans=3,sec=sys,mountaddr=192.168.56.120,mountvers=3,mountport=20048,mountproto=udp,local_lock=none,addr=192.168.56.120)
-
+```
 - проверяем наличие ранее созданных файлов
-
+```
 [root@nfscln upload]# ls
 check_file  client_file
-
+```
 - создаём тестовый файл `touch final_check` 
 - проверяем, что файл успешно создан 
 
-
+```
 [root@nfscln upload]# touch final_check
 [root@nfscln upload]# ls
 check_file  client_file  final_check
