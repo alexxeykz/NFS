@@ -56,11 +56,13 @@ Created symlink from /etc/systemd/system/dbus-org.fedoraproject.FirewallD1.servi
 Created symlink from /etc/systemd/system/multi-user.target.wants/firewalld.service to /usr/lib/systemd/system/firewalld.service.
 ```
 Разрешаем в firewall доступ к сервисам NFS
+```
 [root@nfsserv vagrant]# firewall-cmd --add-service="nfs3" \
 > --add-service="rpc-bind" \
 > --add-service="mountd" \
 > --permanent
 success
+```
 ```
 [root@nfsserv vagrant]# firewall-cmd --reload
 success
