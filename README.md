@@ -1,11 +1,10 @@
 # NFS
 
-Создаем Vagrantfile с двумя машинами 
+Создаем Vagrantfile с двумя машинами, с настройкой nfs. 
 nfss - сервер
 nfsc - клиент
 
-После установки 2 машин настраиваем nfs server
-
+Сначала проверяем стенд вручную.
 заходим на сервер:
 ```
 root@testvm:/home/NFS# vagrant ssh nfss
