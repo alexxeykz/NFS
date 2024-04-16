@@ -4,6 +4,7 @@
 ```
 nfss(nfsserv) - сервер
 nfsc(nfscln) - клиент
+nfs_server.sh
 
 ```
 Сначала проверяем стенд вручную.
