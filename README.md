@@ -306,23 +306,25 @@ Last login: Mon Apr 15 21:46:27 2024 from 10.0.2.2
 [vagrant@nfscln ~]$ showmount -a 192.168.56.120
 All mount points on 192.168.56.120:
 ```
+```
 - заходим в каталог `/mnt/upload` 
 - проверяем статус монтирования `mount | grep mnt`
+```
 ```
 [root@nfscln vagrant]# cd /mnt/upload
 [root@nfscln upload]# mount | grep mnt
 systemd-1 on /mnt type autofs (rw,relatime,fd=33,pgrp=1,timeout=0,minproto=5,maxproto=5,direct,pipe_ino=11183)
 192.168.56.120:/srv/share/ on /mnt type nfs (rw,relatime,vers=3,rsize=32768,wsize=32768,namlen=255,hard,proto=udp,timeo=11,retrans=3,sec=sys,mountaddr=192.168.56.120,mountvers=3,mountport=20048,mountproto=udp,local_lock=none,addr=192.168.56.120)
-```
+
 - проверяем наличие ранее созданных файлов
-```
+
 [root@nfscln upload]# ls
 check_file  client_file
-```
+
 - создаём тестовый файл `touch final_check` 
 - проверяем, что файл успешно создан 
-```
-```
+
+
 [root@nfscln upload]# touch final_check
 [root@nfscln upload]# ls
 check_file  client_file  final_check
